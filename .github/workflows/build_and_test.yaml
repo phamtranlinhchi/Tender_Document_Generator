@@ -17,14 +17,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    # --- arc missing docker daemon
-    - name: Set up Docker (DinD) 
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-        sudo systemctl start docker
-        sudo systemctl enable docker
-    # ---
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
     - name: Cache Docker layers
