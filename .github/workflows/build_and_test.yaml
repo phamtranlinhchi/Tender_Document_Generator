@@ -12,7 +12,7 @@ jobs:
   build_run_test:
     runs-on: arc-runner-set # Test new self-hosted runner
     container:
-      image: docker:20.10.24-ubuntu22.04
+      image: docker:20.10.24
     permissions:
       contents: read
       packages: write
