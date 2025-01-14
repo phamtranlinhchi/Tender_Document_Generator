@@ -36,6 +36,12 @@ jobs:
     - name: Check container status
       run: docker inspect tender-docxtemplate-app
 
+    - name: Setup Python
+      uses: actions/setup-python@v5.3.0
+      with:
+        # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
+        python-version: latest
+
     - name: Run Robot Framework tests
       run: |
         pip install git+https://github.com/robotframework/SeleniumLibrary.git
