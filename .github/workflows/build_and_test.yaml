@@ -43,13 +43,21 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
+        echo "##[command]pip install git+https://github.com/robotframework/SeleniumLibrary.git"
         pip install git+https://github.com/robotframework/SeleniumLibrary.git
+        echo "##[command]wget --no-verbose -O /tmp/chrome.deb https://mirror.cs.uchicago.edu/google-chrome/pool/main/g/google-chrome-stable/google-chrome-stable_120.0.6099.71-1_amd64.deb"
         wget --no-verbose -O /tmp/chrome.deb https://mirror.cs.uchicago.edu/google-chrome/pool/main/g/google-chrome-stable/google-chrome-stable_120.0.6099.71-1_amd64.deb
+        echo "##[command]sudo apt install -y --allow-downgrades /tmp/chrome.deb"
         sudo apt install -y --allow-downgrades /tmp/chrome.deb
+        echo "##[command]rm /tmp/chrome.deb"
         rm /tmp/chrome.deb
+        echo "##[command]wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.105/linux64/chromedriver-linux64.zip"
         wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.105/linux64/chromedriver-linux64.zip
+        echo "##[command]unzip chromedriver-linux64.zip"
         unzip chromedriver-linux64.zip
+        echo "##[command]sudo cp chromedriver-linux64/chromedriver /usr/local/bin/"
         sudo cp chromedriver-linux64/chromedriver /usr/local/bin/
+        echo "##[command]robot tests/"
         robot tests/
     - name: Stop and remove container
       if: always()
