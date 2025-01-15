@@ -43,7 +43,6 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
-        echo "##[command]pip install git+https://github.com/robotframework/SeleniumLibrary.git"
         pip install git+https://github.com/robotframework/SeleniumLibrary.git
         wget --no-verbose -O /tmp/chrome.deb https://mirror.cs.uchicago.edu/google-chrome/pool/main/g/google-chrome-stable/google-chrome-stable_120.0.6099.71-1_amd64.deb
         sudo apt install -y --allow-downgrades /tmp/chrome.deb
